@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 #root {
     max-width: 1280px;
     margin: 0 auto;
@@ -7,23 +11,42 @@
 
 body {
     background-color: purple;
+    user-select: none;
+}
+
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
 }
 
 .square {
+    display: flex;
+    flex-direction: row;
     background-color: yellow;
     border-radius: 1em;
-    height: 5em;
-    width: 5em;
+    width: 100%;
+    aspect-ratio: 1;
     color: black;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     cursor: pointer;
 }
 
-.square:hover {
-    background-color: yellowgreen;
+p{
+    font-size: 1.6em;
+    width: 2em;
+    padding: 0;
+    margin: 0;
 }
 
-.square:active {
-    background-color: goldenrod;
+h3 {
+    color: yellow;
+    margin: 0;
+}
+h2 {
+    color: yellow;
+    margin: 0 0 1em;
 }

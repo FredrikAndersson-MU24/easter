@@ -9,7 +9,6 @@ function App() {
     const [selected, setSelected] = useState<number[]>([]);
     const [maxLevel, setMaxLevel] = useState<number>(0);
     const [low, setLow] = useState<number>(1);
-    const [prevLow, setPrevLow] = useState<number>(0);
 
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
@@ -137,23 +136,18 @@ function App() {
                 break;
             case 128:
                 setLow(4);
-                setPrevLow(2);
                 break;
             case 256:
                 setLow(8);
-                setPrevLow(4);
                 break;
             case 512:
                 setLow(16);
-                setPrevLow(8);
                 break;
             case 1024:
                 setLow(32);
-                setPrevLow(16);
                 break;
             case 2048:
                 setLow(64);
-                setPrevLow(32);
                 break;
         }
     };

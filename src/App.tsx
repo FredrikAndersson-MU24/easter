@@ -113,7 +113,6 @@ function App() {
                         setLowestLevel();
                         console.log("from if statement");
                     }
-                    console.log("low: " + low);
                     addRandomNumber(newGrid); // Add a new random number to the grid
                     setCount(count + 1);
                     return newGrid;
@@ -154,14 +153,13 @@ function App() {
 
     const determineLowestNumber = (grid: { [key: number]: number }) => {
         let instances: number = 0;
-        console.log(low);
         for (let i = 1; i <= 16; i++) {
             if (grid[i] === low) {
                 instances++;
             }
         }
-        console.log(instances % 2);
-        if (instances % 2) {
+        console.log("modulo: " + instances % 2 === 0);
+        if (instances % 2 === 0) {
             return true;
         } else return false;
     };
@@ -201,6 +199,7 @@ function App() {
                                         vertical: "bottom",
                                         horizontal: "left",
                                     }}
+                                    aria-hidden={false}
                                 >
                                     <List
                                         style={{

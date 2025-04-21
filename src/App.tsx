@@ -158,7 +158,6 @@ function App() {
                 instances++;
             }
         }
-        console.log("modulo: " + instances % 2 === 0);
         if (instances % 2 === 0) {
             return true;
         } else return false;

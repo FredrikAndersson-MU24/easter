@@ -59,6 +59,7 @@ function App() {
         512: "🍭",
         1024: "🍫",
         2048: "🦄",
+        4096: "🧙"
     };
 
     // Initialize the grid with 6-7 random squares filled with 1s and 2s
@@ -162,6 +163,9 @@ function App() {
             case 2048:
                 setLow(64);
                 break;
+            case 4096:
+                setLow(128);
+                break;
             default:
                 break;
         }
@@ -184,7 +188,7 @@ function App() {
     }, [selected]);
 
     useEffect(() => {
-        if (maxLevel === 2) {
+        if (maxLevel === 4096) {
             handleOpenDialog();
         }
     }, [maxLevel]);
@@ -239,6 +243,7 @@ function App() {
                                         <ListItem>512: 🍭</ListItem>
                                         <ListItem>1024: 🍫</ListItem>
                                         <ListItem>2048: 🦄</ListItem>
+                                        <ListItem>4096: 🧙</ListItem>
                                     </List>
                                 </Popover>
                             </Stack>

@@ -1,6 +1,17 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import "./App.css";
-import { Button, Grid, Stack, Popover, List, ListItem } from "@mui/material";
+import {
+    Button,
+    Grid,
+    Stack,
+    Popover,
+    List,
+    ListItem,
+    Dialog,
+    ListItemButton,
+    ListItemText,
+    DialogTitle, DialogContent
+} from "@mui/material";
 import * as React from "react";
 
 function App() {
@@ -99,7 +110,6 @@ function App() {
                 emptySquares.push(i);
             }
         }
-        determineLowestNumber(newGrid);
         if (emptySquares.length > 0) {
             const randomIndex =
                 emptySquares[Math.floor(Math.random() * emptySquares.length)];
@@ -122,7 +132,6 @@ function App() {
                     };
                     if (determineLowestNumber(newGrid)) {
                         setLowestLevel();
-                        console.log("from if statement");
                     }
                     addRandomNumber(newGrid); // Add a new random number to the grid
                     setCount(count + 1);
@@ -135,12 +144,6 @@ function App() {
 
     const setLowestLevel = () => {
         switch (maxLevel) {
-            case 16:
-                setLow(2);
-                break;
-            case 32:
-                setLow(2);
-                break;
             case 64:
                 setLow(2);
                 break;
@@ -159,6 +162,8 @@ function App() {
             case 2048:
                 setLow(64);
                 break;
+            default:
+                break;
         }
     };
 
@@ -169,9 +174,7 @@ function App() {
                 instances++;
             }
         }
-        if (instances % 2 === 0) {
-            return true;
-        } else return false;
+        return instances % 2 === 0;
     };
 
     useEffect(() => {
@@ -242,7 +245,7 @@ function App() {
                         </Grid>
                     </Grid>
                     <Grid container spacing={"1em"} maxWidth={"400px"}>
-                        {Array.from({ length: 16 }, (_, i) => (
+                        {Array.from({length: 16}, (_, i) => (
                             <Grid
                                 key={i + 1}
                                 size={3}

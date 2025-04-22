@@ -12,6 +12,17 @@ function App() {
 
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
+    const [openDialog, setOpenDialog] = React.useState<boolean>(false);
+
+    const handleOpenDialog = () => {
+        setOpenDialog(true);
+    };
+
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+        resetGrid();
+    };
+
     const handleClickLvl = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -169,6 +180,12 @@ function App() {
         }
     }, [selected]);
 
+    useEffect(() => {
+        if (maxLevel === 2) {
+            handleOpenDialog();
+        }
+    }, [maxLevel]);
+
     return (
         <>
             <Grid>
@@ -258,6 +275,28 @@ function App() {
                     </Button>
                 </Stack>
             </Grid>
+            <Dialog open={openDialog} sx={{
+                padding: 0,
+                marginLeft: "auto",
+                marginRight: "auto",
+                bottom: "-60%",
+                position: "absolute"
+            }}>
+                <DialogTitle sx={{backgroundColor: "purple", color: "yellow"}}>Congratulations 🎉 </DialogTitle>
+                <DialogContent sx={{backgroundColor: "purple", color: "yellow"}}>You reached max
+                    level!</DialogContent>
+                <List sx={{backgroundColor: "purple", color: "yellow"}}>
+                    <ListItem disablePadding>
+                        <ListItemButton
+                            autoFocus
+                            onClick={() => handleCloseDialog()}
+                            sx={{backgroundColor: "purple", color: "yellow", textAlign: "center"}}
+                        >
+                            <ListItemText primary="Play again!"/>
+                        </ListItemButton>
+                    </ListItem>
+                </List>
+            </Dialog>
         </>
     );
 }

@@ -88,6 +88,7 @@ function App() {
     }, []);
 
     const handleClick = (key: number) => {
+        determineLowestNumber(grid);
         setSelected((prevSelected) => {
             if (prevSelected.length < 2 && !prevSelected.includes(key)) {
                 return [...prevSelected, key];
@@ -131,9 +132,7 @@ function App() {
                         [first]: 0,
                         [second]: prevGrid[first] * 2,
                     };
-                    if (determineLowestNumber(newGrid)) {
-                        setLowestLevel();
-                    }
+
                     addRandomNumber(newGrid); // Add a new random number to the grid
                     setCount(count + 1);
                     return newGrid;
@@ -178,7 +177,10 @@ function App() {
                 instances++;
             }
         }
-        return instances % 2 === 0;
+        if (instances % 2 === 0) {
+            setLowestLevel();
+        }
+        ;
     };
 
     useEffect(() => {
@@ -275,7 +277,7 @@ function App() {
                             fontWeight: "bold",
                             borderRadius: "1em",
                             alignSelf: "center",
-                            marginTop: "1em",
+                            marginTop: "5em",
                         }}
                         variant="contained"
                     >
